@@ -7,6 +7,7 @@ import { GET_CARS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
 import RemoveCar from "../buttons/RemoveCar";
 import UpdateCar from "../forms/updateCar";
+import CarSubItem from "./CarSubItem";
 
 const CarCard = (props) => {
   const [editMode, setEditMode] = useState(false);
@@ -32,39 +33,44 @@ const CarCard = (props) => {
       {cars.length > 0 &&
         cars
           .filter((car) => car.personId == personId)
-          .map((car) =>
-            editMode ? (
-              <UpdateCar
-                id={car.id}
-                make={car.make}
-                model={car.model}
-                year={car.year}
-                price={car.price}
-                personId={car.personId}
-                onButtonClick={handleButtonClick}
-              />
-            ) : (
-              <Card
-                key={car.id}
-                style={styles.card}
-                actions={[
-                  <EditOutlined
-                    style={{ color: "green" }}
-                    key="edit"
-                    onClick={handleButtonClick}
-                  />,
-                  <RemoveCar
-                    id={car.id}
-                    carMake={car.make}
-                    carModel={car.model}
-                  />,
-                ]}
-              >
-                {car.year} {car.make} {car.model} -&#x3e; $
-                {parseInt(car.price).toLocaleString()}
-              </Card>
-            )
-          )}
+          .map(({ id, make, model, year, price, personId }) => (
+            <CarSubItem
+              key={id}
+              id={id}
+              make={make}
+              model={model}
+              year={year}
+              price={price}
+              personId={personId}
+              onButtonClick={handleButtonClick}
+            />
+            // editMode ? (
+            //   <UpdateCar
+            //     id={id}
+            //     make={make}
+            //     model={model}
+            //     year={year}
+            //     price={price}
+            //     personId={personId}
+            //     onButtonClick={handleButtonClick}
+            //   />
+            // ) : (
+            //   <Card
+            //     key={id}
+            //     style={styles.card}
+            //     actions={[
+            //       <EditOutlined
+            //         style={{ color: "green" }}
+            //         key="edit"
+            //         onClick={handleButtonClick}
+            //       />,
+            //       <RemoveCar id={id} carMake={make} carModel={model} />,
+            //     ]}
+            //   >
+            //     {year} {make} {model} -&#x3e; $
+            //     {parseInt(price).toLocaleString()}
+            //   </Card>
+          ))}
     </>
   );
 };
