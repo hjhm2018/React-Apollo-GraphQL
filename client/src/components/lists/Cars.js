@@ -43,7 +43,7 @@ const Cars = () => {
 
 const getStyles = () => ({
   list: {
-    width: "70%",
+    width: "80%",
     margin: "10px",
   },
 });

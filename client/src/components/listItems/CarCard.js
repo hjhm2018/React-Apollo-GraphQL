@@ -44,32 +44,6 @@ const CarCard = (props) => {
               personId={personId}
               onButtonClick={handleButtonClick}
             />
-            // editMode ? (
-            //   <UpdateCar
-            //     id={id}
-            //     make={make}
-            //     model={model}
-            //     year={year}
-            //     price={price}
-            //     personId={personId}
-            //     onButtonClick={handleButtonClick}
-            //   />
-            // ) : (
-            //   <Card
-            //     key={id}
-            //     style={styles.card}
-            //     actions={[
-            //       <EditOutlined
-            //         style={{ color: "green" }}
-            //         key="edit"
-            //         onClick={handleButtonClick}
-            //       />,
-            //       <RemoveCar id={id} carMake={make} carModel={model} />,
-            //     ]}
-            //   >
-            //     {year} {make} {model} -&#x3e; $
-            //     {parseInt(price).toLocaleString()}
-            //   </Card>
           ))}
     </>
   );

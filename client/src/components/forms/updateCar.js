@@ -86,7 +86,9 @@ const UpdateCar = (props) => {
           </Button>
         )}
       </Form.Item>
-      <Button onClick={onButtonClick}>Cancel</Button>
+      <Button danger type="primary" onClick={onButtonClick}>
+        Cancel
+      </Button>
     </Form>
   );
 };
