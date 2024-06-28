@@ -1,23 +1,9 @@
-import { Card } from "antd";
-// import RemoveContact from "../buttons/RemoveContact";
-import { EditOutlined } from "@ant-design/icons";
-import { useState } from "react";
-// import UpdateContact from "../forms/updateContact";
 import { GET_CARS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
-import RemoveCar from "../buttons/RemoveCar";
-import UpdateCar from "../forms/updateCar";
 import CarSubItem from "./CarSubItem";
 
 const CarCard = (props) => {
-  const [editMode, setEditMode] = useState(false);
   const { personId } = props;
-
-  const styles = getStyles();
-
-  const handleButtonClick = () => {
-    setEditMode(!editMode);
-  };
 
   const { loading, error, data } = useQuery(GET_CARS);
 
@@ -26,7 +12,6 @@ const CarCard = (props) => {
   if (error) return "Error fetching data...";
 
   const { cars } = data;
-  // console.log(cars);
 
   return (
     <>
@@ -42,17 +27,10 @@ const CarCard = (props) => {
               year={year}
               price={price}
               personId={personId}
-              onButtonClick={handleButtonClick}
             />
           ))}
     </>
   );
 };
-
-const getStyles = () => ({
-  card: {
-    width: "100%",
-  },
-});
 
 export default CarCard;

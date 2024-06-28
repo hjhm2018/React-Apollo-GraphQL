@@ -13,7 +13,6 @@ const Cars = () => {
   if (error) return "Error fetching data...";
 
   const { people } = data;
-  // console.log(people);
 
   return (
     <>
