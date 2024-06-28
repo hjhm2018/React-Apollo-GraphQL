@@ -20,6 +20,10 @@ const AddCar = () => {
     console.log(`selected ${value}`);
   };
 
+  const clearForm = () => {
+    form.resetFields();
+  };
+
   const onFinish = (values) => {
     const { year, make, model, price, personId } = values;
     // console.log("values", values);
@@ -45,6 +49,8 @@ const AddCar = () => {
         });
       },
     });
+
+    clearForm();
   };
 
   const { loading, error, data } = useQuery(GET_PEOPLE);

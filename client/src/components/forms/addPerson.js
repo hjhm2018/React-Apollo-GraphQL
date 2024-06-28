@@ -16,6 +16,10 @@ const AddPerson = () => {
     forceUpdate();
   }, []);
 
+  const clearForm = () => {
+    form.resetFields();
+  };
+
   const onFinish = (values) => {
     const { firstName, lastName } = values;
 
@@ -37,6 +41,8 @@ const AddPerson = () => {
         });
       },
     });
+
+    clearForm();
   };
 
   return (
