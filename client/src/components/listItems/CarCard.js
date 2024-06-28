@@ -29,22 +29,6 @@ const CarCard = (props) => {
 
   return (
     <>
-      {/* {editMode ? (
-        // <UpdateCar
-        //   id={car.id}
-        //   make={car.make}
-        //   model={car.model}
-        //   year={car.year}
-        //   personId={car.personId}
-        //   onButtonClick={handleButtonClick}
-        // />
-        ""
-      ) :() (
-        <Card
-          style={styles.card}
-          actions={[<EditOutlined key="edit" onClick={handleButtonClick} />]}
-        ></Card>
-      )} */}
       {cars.length > 0 &&
         cars
           .filter((car) => car.personId == personId)
