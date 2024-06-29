@@ -3,6 +3,7 @@ import CarCard from "../listItems/CarCard";
 import { useQuery } from "@apollo/client";
 import { GET_PEOPLE } from "../../graphql/queries";
 import ListHeader from "../listItems/ListHeader";
+import { Link } from "react-router-dom";
 
 const Cars = () => {
   const styles = getStyles();
@@ -26,6 +27,7 @@ const Cars = () => {
             header={
               <ListHeader id={id} firstName={firstName} lastName={lastName} />
             }
+            footer={<Link to={`/person/${id}`}>Learn More</Link>}
             bordered
           >
             <List.Item>

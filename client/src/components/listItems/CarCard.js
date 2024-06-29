@@ -17,7 +17,7 @@ const CarCard = (props) => {
     <>
       {cars.length > 0 &&
         cars
-          .filter((car) => car.personId == personId)
+          .filter((car) => car.personId === personId)
           .map(({ id, make, model, year, price, personId }) => (
             <CarSubItem
               key={id}
