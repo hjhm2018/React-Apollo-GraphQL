@@ -119,6 +119,8 @@ const typeDefs = `
 
     type Mutation {
         addPerson(id: String!, firstName: String!, lastName: String!): Person
+        updatePerson(id: String!, firstName: String!, lastName: String!): Person
+        removePerson(id: String!): Person
         addCar(id: String!, year: String!, make: String!, model: String!, price: String!, personId: String): Car
         updateCar(id: String!, year: String!, make: String!, model: String!, price: String!, personId: String!): Car
         removeCar(id: String!): Car
@@ -147,6 +149,31 @@ const resolvers = {
       peopleArr.push(newPerson);
 
       return newPerson;
+    },
+    updatePerson: (root, args) => {
+      const person = find(peopleArr, { id: args.id });
+
+      if (!person) {
+        throw Error(`Couldn't find person with id ${args.id}`);
+      }
+
+      person.firstName = args.firstName;
+      person.lastName = args.lastName;
+
+      return person;
+    },
+    removePerson: (root, args) => {
+      const removedPerson = find(peopleArr, { id: args.id });
+
+      if (!removedPerson) {
+        throw Error(`Couldn't find person with id ${args.id}`);
+      }
+
+      remove(peopleArr, (c) => {
+        return c.id == removedPerson.id;
+      });
+
+      return removedPerson;
     },
     addCar: (root, args) => {
       const newCar = {

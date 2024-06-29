@@ -33,6 +33,26 @@ export const ADD_PERSON = gql`
   }
 `;
 
+export const UPDATE_PERSON = gql`
+  mutation UpdatePerson($id: String!, $firstName: String!, $lastName: String!) {
+    updatePerson(id: $id, firstName: $firstName, lastName: $lastName) {
+      firstName
+      id
+      lastName
+    }
+  }
+`;
+
+export const REMOVE_PERSON = gql`
+  mutation RemovePerson($id: String!) {
+    removePerson(id: $id) {
+      firstName
+      id
+      lastName
+    }
+  }
+`;
+
 export const ADD_CAR = gql`
   mutation AddCar(
     $id: String!

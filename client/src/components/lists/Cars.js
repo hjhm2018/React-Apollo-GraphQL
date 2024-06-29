@@ -2,6 +2,7 @@ import { List } from "antd";
 import CarCard from "../listItems/CarCard";
 import { useQuery } from "@apollo/client";
 import { GET_PEOPLE } from "../../graphql/queries";
+import ListHeader from "../listItems/ListHeader";
 
 const Cars = () => {
   const styles = getStyles();
@@ -17,22 +18,18 @@ const Cars = () => {
   return (
     <>
       {people.length > 0 &&
-        people.map((person) => (
+        people.map(({ id, firstName, lastName }) => (
           <List
-            key={person.id}
+            key={id}
             style={styles.list}
             grid={{ gutter: 20, column: 1 }}
             header={
-              <div>
-                <h3>
-                  {person.firstName} {person.lastName}
-                </h3>
-              </div>
+              <ListHeader id={id} firstName={firstName} lastName={lastName} />
             }
             bordered
           >
             <List.Item>
-              <CarCard personId={person.id} />
+              <CarCard personId={id} />
             </List.Item>
           </List>
         ))}
